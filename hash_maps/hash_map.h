@@ -15,27 +15,27 @@ typedef struct {
 
 // definition of the hash map type
 typedef struct {
-  int sze;         // stores the number of nodes in map
+  unsigned long int sze;         // stores the number of nodes in map
   hash_node* map;  // array of hash_nodes in map
 } hash_map;
 
 // generates a hash_map of sze
 //  if sze is less than 1, defaults to 1
-hash_map gen_map(int sze);
+hash_map gen_map(unsigned long int sze);
 
 // A simple hash formula for strings
-int hash_key(char* key, int sze); // returns hash of key 0 to sze-1
+unsigned long int hash_key(char* key, unsigned long int sze); // returns hash of key 0 to sze-1
 
 // Insert and delete nodes from map
 //  both auto resize map for memory effeciency
 //
 // NOTE: del_node returns 1 if key nonexistint
-char ins_node(char* key, int val, hash_map* map); // put val at key in map
-int del_node (char* key, hash_map* map); // del key from map
+char set_node(char* key, int val, hash_map* map); // put val at key in map
+char del_node (char* key, hash_map* map); // del key from map
 
 // return val at key in map
 // CAUTION: exits program with EXIT_FAILURE if key noexistint
-int grab_node(char* key, hash_map* map); 
+int get_node(char* key, hash_map* map); 
 
 // frees pointers in map for map deletion
 void clean_hash(hash_map* map); 
